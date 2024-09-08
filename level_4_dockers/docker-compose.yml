@@ -1,0 +1,6 @@
+services:
+  app:
+    image: ghcr.io/yanivgabay/flag-extractor:latest
+    ports:
+    - "80:80"
+    
