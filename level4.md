@@ -45,3 +45,11 @@ ssh -i ./.ssh/my_gce_key username@externalip
 
 all the private information is stored inside a .env file, which the bash script will load the variables from there.
 
+### to do
+
+we got an warning:
+WARNING! Your password will be stored unencrypted in /home/yaniv/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+so need to explore about this topic, we should check the link and see what we can do to fix this.
