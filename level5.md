@@ -27,3 +27,4 @@ nothing too complicated
 next for part 2 , we were asked to do a logger that changed based on the original env.py
 for simplicity i just copied the env.py to part2.py
 
+than we can see the logger wont show debug messages when the env is set to production
