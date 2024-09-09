@@ -1,0 +1,5 @@
+*.sh
+*.env
+.ssh
+/.ssh
+.ssh/
