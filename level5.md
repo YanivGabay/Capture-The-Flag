@@ -17,3 +17,13 @@ pip freeze > requirements.txt
 ```
 
 to create a requirements file
+
+next we did part 1 which invloved using env variables and validators
+
+it is important to run the code from the venv terminal, cus the "local" ide iterpreter will not find the installed packages.
+
+nothing too complicated
+
+next for part 2 , we were asked to do a logger that changed based on the original env.py
+for simplicity i just copied the env.py to part2.py
+
