@@ -12,6 +12,9 @@ the package is located on my personal github:
 after that, the "tricky" part, was to install docker on our VM which i choose debian
 but after a few commands and a few stackoverflow to understand why docker was installed and not
 docker compose, i succsefully installed it.
+than it was easy as pie, upload the docker compose file with the ssh online terminal
+docker compose up, and we had our machine running a docker with our image and running our code
+and found the flag!
 
 
 althourgh its bad to share this, cause it is limited to 7 days i did write the token here:
