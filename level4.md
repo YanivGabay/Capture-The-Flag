@@ -43,5 +43,5 @@ now we can connect to the machine with the following
 ssh -i ./.ssh/my_gce_key username@externalip
 ```
 
-althourgh its bad to share this, cause it is limited to 7 days i did write the token here:
-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
+all the private information is stored inside a .env file, which the bash script will load the variables from there.
+
