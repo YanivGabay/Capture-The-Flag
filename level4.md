@@ -49,6 +49,13 @@ IMPORTANT, when you stop and active your gce, the external ip will change, so yo
 
 ### to do
 
+prod logger should print ERROR and CRITICAL
+dev logger everything.
+
+we need to add the env file to the docker compose file, so we can use the env variables inside the docker remotly (if we want to use level5 inside the gce env)
+
+
+
 we got an warning:
 WARNING! Your password will be stored unencrypted in /home/yaniv/.docker/config.json.
 Configure a credential helper to remove this warning. See

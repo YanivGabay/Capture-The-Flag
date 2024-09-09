@@ -28,3 +28,9 @@ next for part 2 , we were asked to do a logger that changed based on the origina
 for simplicity i just copied the env.py to part2.py
 
 than we can see the logger wont show debug messages when the env is set to production
+
+### to do
+run the level 3 code, with .env variables and a logger
+that will output depend on the ENV variable
+and i want to capture the output to a file, so i can see the output of the logger
+
