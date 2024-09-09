@@ -88,7 +88,7 @@ copy_compose_file_to_gce() {
 
 # Execute functions
 build_and_push_image
-ssh -i $SSH_KEY_PATH $GCE_INSTANCE "echo $GITHUB_PAT | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin && docker pull ghcr.io/yanivgabay/flag-extractor:latest"
+#ssh -i $SSH_KEY_PATH $GCE_INSTANCE "echo $GITHUB_PAT | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin && docker pull ghcr.io/yanivgabay/flag-extractor:latest"
 
 login_and_pull_image_on_gce
 copy_compose_file_to_gce

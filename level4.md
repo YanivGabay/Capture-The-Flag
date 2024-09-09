@@ -45,6 +45,8 @@ ssh -i ./.ssh/my_gce_key username@externalip
 
 all the private information is stored inside a .env file, which the bash script will load the variables from there.
 
+IMPORTANT, when you stop and active your gce, the external ip will change, so you need to update the .env file with the new ip.
+
 ### to do
 
 we got an warning:
