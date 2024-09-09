@@ -3,7 +3,9 @@ import os
 
 
 def configure_logger():
-    env = os.getenv('ENV', 'production')  # Default to production if not specified
+    #default should be dev, make sense!!! (previosly was development)
+    env = os.getenv('ENV', 'dev')  
+    
     logger = logging.getLogger(__name__)
 
     URL = os.getenv('URL_PATH')
