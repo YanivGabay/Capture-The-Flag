@@ -51,11 +51,5 @@ after http://104.197.100.132:5000/level1/
 ## we have found the flag:
 "First time's a charm!"
 
-## level 2 route:
-{
-  "error": "Request processing took too long and timed out... , try to fetch part of the data by specifying start and end of a batch"
-}
-## so we obviosly need to give some paramters like start and end to the endpoint
 
-they want a pythonic solution so we will use request to slowly fetch in batches the end point
 
