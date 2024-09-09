@@ -5,6 +5,10 @@ set -e
 
 echo "Script has started"
 
+
+## because i didnt understand why it isnt working
+## i forgot to open the docker daemon on windows
+## i created this function to check if the docker daemon is running
 ask_docker_status() {
     echo "Is the Docker daemon running? (yes/no)"
     read -r answer  # Read user input into variable 'answer'
@@ -21,7 +25,7 @@ ask_docker_status() {
 ask_docker_status
 
 # Load environment variables
-if [ ! -f ./.env ]; then
+if [ ! -f ./.env ]; then #check if file doesnt exists
     echo ".env file not found."
     exit 1
 else
@@ -32,6 +36,7 @@ fi
 
 
 # Function to build and push Docker image
+##  just the steps with did previously withing a script
 build_and_push_image() {
     echo "Building Docker image..."
     docker build -t $IMAGE_NAME:$TAG . || { echo "Failed to build Docker image"; exit 1; }
@@ -48,6 +53,11 @@ build_and_push_image() {
 
 # Function to pull Docker image on GCE
 # Function to login and pull Docker image on GCE
+
+## this part was the most complex to do
+## we basicly feed the ssh command with the script we want to run on the remote machine
+## we must not forget to connect to the docker registry before pulling the image inside
+## the remote machine
 login_and_pull_image_on_gce() {
     echo "Ensuring Docker on GCE is logged in and pulling the image..."
     ssh -i $SSH_KEY_PATH $GCE_INSTANCE <<EOF
