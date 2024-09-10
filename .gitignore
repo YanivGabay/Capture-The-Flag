@@ -140,7 +140,7 @@ Makefile
 Testing/
 rockyou.txt
 .env.common 
-
+*.json
 italiandude.png
 rockyou.txt
 .env.common
