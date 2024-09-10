@@ -84,6 +84,8 @@ EOF
 copy_compose_file_to_gce() {
     echo "Copying Docker Compose file to GCE..."
     scp -i $SSH_KEY_PATH $DOCKER_COMPOSE_FILE_PATH $GCE_INSTANCE:$DOCKER_COMPOSE_FILE_PATH || { echo "Failed to copy Docker Compose file to GCE"; exit 1; }
+
+    scp -i $SSH_KEY_PATH $ENV_COMMON_FILE_PATH $GCE_INSTANCE:$ENV_COMMON_FILE_PATH || { echo "Failed to copy common environment file to GCE"; exit 1; }
 }
 
 # Execute functions

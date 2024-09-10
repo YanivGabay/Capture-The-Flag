@@ -139,6 +139,7 @@ compile_commands.json
 Makefile
 Testing/
 
+.env.common
 .ssh
 # Poetry
 #   According to pypa/poetry#191, it is recommended to include poetry.lock in version control.
