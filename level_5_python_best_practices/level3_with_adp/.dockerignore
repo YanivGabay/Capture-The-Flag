@@ -1,5 +1,5 @@
 *.sh
-*.env
+.env
 .ssh
 /.ssh
 .ssh/

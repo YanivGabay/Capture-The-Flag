@@ -1,6 +1,7 @@
 import asyncio
 import aiohttp
 import time
+from logger import logger
 
 async def fetch_data(session, base_url, start, end):
     params = {'start': start, 'end': end}
@@ -9,10 +10,10 @@ async def fetch_data(session, base_url, start, end):
             if response.status == 200:
                 return await response.json(), True
             else:
-                print(f"Failed to fetch data: {response.status}")
+                logger.error(f"Failed to fetch data with status {response.status}")
                 return None, False
     except asyncio.TimeoutError:
-        print("Request timed out")
+        logger.warning("Request timed out")
         return None, False
 
 async def adaptive_fetch(session, base_url, start, initial_batch_size, scale_back_factor):
@@ -34,7 +35,7 @@ async def adaptive_fetch(session, base_url, start, initial_batch_size, scale_bac
                 batch_size = max(100, int(batch_size * scale_back_factor))
                # timeout = min(30, timeout + 5)  # Adjust timeout up to a maximum
             else:
-                print("Stopping after minimum batch size and +++maximum timeout reached.")
+                logger.warning("stopped after reaching minimum batch size or timeout")
                 break
 
 def check_for_flag(data, key='flag'):
@@ -56,10 +57,10 @@ async def main():
             flag = check_for_flag(data)
             if flag:
                 time_elapsed = time.time() - start_time
-                print(f"Flag found: {flag}")
-                print(f"Time taken to find the flag: {time_elapsed:.2f} seconds")
+                logger.critical(f"Flag found: {flag}")
+                logger.critical(f"Time taken to find the flag: {time_elapsed:.2f} seconds")
                 break
-            print(data)
+            logger.debug(f"data: {data}")
 
 if __name__ == "__main__":
     asyncio.run(main())
