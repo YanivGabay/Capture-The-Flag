@@ -139,6 +139,7 @@ compile_commands.json
 Makefile
 Testing/
 
+rockyou.txt
 .env.common
 .ssh
 # Poetry

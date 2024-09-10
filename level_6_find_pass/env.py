@@ -4,7 +4,7 @@ import validators
 
 load_dotenv()
 
-ENV = os.getenv('ENV','dev')
+ENV = os.getenv('ENV')
 print(f"Running in {ENV} environment")
 ENDPOINT = os.getenv('URL_PATH')
 print(f"This is the endpoint: {ENDPOINT}")
