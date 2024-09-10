@@ -12,6 +12,7 @@ def configure_logger():
     if not URL:
         raise ValueError("URL_PATH environment variable not set")
     # Setting different log levels based on the environment
+    print(f"loggin in {env} environment")
     if env == 'development' or 'dev':
         log_level = logging.DEBUG  # Log everything in development
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
