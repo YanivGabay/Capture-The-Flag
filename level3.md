@@ -1,6 +1,6 @@
 
 
-## level 3
+## Level 3
 same drill as level 2, with the /level3 endpoint
 
 but we need to run the script from a GCE (google cloud env) VM

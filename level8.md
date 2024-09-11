@@ -1,7 +1,7 @@
 
 
 
-## level 8 
+## Level 8 
 
 first step was to create a new bucket in gce
 

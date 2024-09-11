@@ -16,7 +16,10 @@ To view the my thought proccess on each drill you can check the md file for each
 - [Level 3](level3.md)
 - [Level 4](level4.md)
 - [Level 5](level5.md)
-- [Level 6](level6.md) - to be added
+- [Level 6](level6.md) 
+- [Level 7](level7.md)
+- [Level 8](level8.md)
+- [Level 9](level9.md)
 
 Feel free to explore and review the solutions. If you have any questions or need further assistance, please let me know.
 
